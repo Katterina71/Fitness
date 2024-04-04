@@ -68,23 +68,49 @@ const planner = document.getElementById("planner");
     document.getElementById("days").appendChild(dFrag);
   }
   
+  // function workouts(workout) {
+  //   const workoutDiv = document.getElementById("workout");
+  //   workout.forEach((element) => {
+  //     let optionElement = document.createElement("button");
+  //     optionElement.textContent = element.part;
+  //     optionElement.classList.add("buttonWorkOutPart");
+  //     workoutDiv.appendChild(optionElement);
+  //   });
+  // }
+
+
+
   function fillInTheDayBox(day, workout) {
-    let selectBodyPart = document.createElement("select");
-    console.log(workout[1]);
-    Array.prototype.forEach.call(workout, (element) => {
-      console.log(element);
-      let optionElement = document.createElement("option");
-      optionElement.value = element.part;
-      optionElement.textContent = element.part;
-      selectBodyPart.appendChild(optionElement);
-    });
-    day.appendChild(selectBodyPart);
+    // let selectBodyPart = document.createElement("select");
+    
+    // workout.forEach((element) => {
+    //   console.log(element);
+    //   let optionElement = document.createElement("option");
+    //   optionElement.value = element.part;
+    //   optionElement.textContent = element.part;
+    //   selectBodyPart.appendChild(optionElement);
+    // });
+    // day.appendChild(selectBodyPart);
+    const divPart = document.createElement("div");
+    divPart.setAttribute('id', 'WorkoutPart')
+    day.appendChild(divPart);
+    workout.forEach((element) => {
+        let optionElement = document.createElement("button");
+        optionElement.textContent = element.part;
+        optionElement.classList.add("buttonWorkOutPart");
+        divPart.appendChild(optionElement);
+      });
+
+
+    const divButton = document.createElement("div");
+    divButton.setAttribute('id', 'ClearOrRemoveBtn')
+    day.appendChild(divButton);
     let removeDay = document.createElement("button");
     removeDay.textContent = "Remove day";
-    day.appendChild(removeDay);
+    divButton.appendChild(removeDay);
     let clearDay = document.createElement("button");
     clearDay.textContent = "Clear All";
-    day.appendChild(clearDay);
+    divButton.appendChild(clearDay);
   }
 
 
@@ -103,7 +129,8 @@ const planner = document.getElementById("planner");
     fillInTheDayBox(day,workout); 
   }
 
-weekdays(Weekdays); 
+weekdays(Weekdays);
+// workouts(workout); 
 
 
 const weekDaysDiv = document.getElementById("days");
@@ -124,7 +151,7 @@ weekDaysDiv.addEventListener("click", function (event) {
 });
 
 // Remove all week
-document.getElementById("startPlanningBtn").addEventListener("click", function(e) {
+document.getElementById("removeAll").addEventListener("click", function(e) {
     e.preventDefault();
 
    const allDays = planner.querySelectorAll(".dayInPlanner");
@@ -137,3 +164,20 @@ document.getElementById("startPlanningBtn").addEventListener("click", function(e
        element.classList.remove("choosenDay");
    });
 }) 
+
+
+document.getElementById("planner").addEventListener("click", function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+
+  // Check if the clicked element is a button inside the day div
+  if (
+    clickedElement.nodeName === "BUTTON" &&
+    clickedElement.closest(".dayInPlanner")
+  ) {
+    // Button inside day div is clicked
+    console.log("Button inside day div is clicked");
+
+    // Perform further actions if needed
+  }
+});
