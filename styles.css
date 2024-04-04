@@ -2,14 +2,34 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url(./bg.png);
-    background-position: fix;
+
   }
   
+  .hero-img {
+   width: 100%;
+   position: relative;
+  }
+
+  .hero-image {
+    width: 100%;
+    position: fixed;
+    /* height: 700px; */
+  }
   .welcome-container {
     background-color: #f5eed2;
     text-align: center;
     padding: 50px;
+
+  
+  }
+
+  #main {
+    position: absolute;
+    background-color: rgb(249, 241, 220);
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 5lh;
+    margin-top: 5vh;
   }
   
   h1 {

@@ -8,46 +8,47 @@ const Weekdays = [
     "Sunday",
   ];
   
-  const workout = {
-    "Upper Body": {
-      chest: [
-        "Push-Ups", "Bench Press", "Incline Dumbbell Press", "Chest Flyes"
-      ],
+  const workout = [
+    {
+      part: "Upper Body",
+      chest: ["Push-Ups", "Bench Press", "Incline Dumbbell Press", "Chest Flyes"],
       back: ["Pull-Ups", "Deadlifts", "Bent-Over Rows", "Lat Pulldowns"],
       shoulders: [
-        ("Front-Squat",
+        "Front-Squat",
         "Overhead Press",
         "Lateral Raises",
         "Front Raises",
-        "Shrugs")
-      ]
+        "Shrugs",
+      ],
     },
-    "Lower Body": {
+    {
+      part: "Lower Body",
       legs: ["Squats", "Lunges", "Deadlifts", "Leg Press", "Leg Curls"],
-      calves: ["Standing Calf Raises", "Seated Calf Raises"]
+      calves: ["Standing Calf Raises", "Seated Calf Raises"],
     },
-    "Core":{
+    {
+      part: "Core",
       core: [
         "Planks",
         "Abdominal Crunches",
         "Leg Raises",
         "Bicycle Crunches",
-        "Russian Twists"
-      ]
-    }
-    ,
-    "Cardio": {
-      cardio:[
+        "Russian Twists",
+      ],
+    },
+    {
+      part: "Cardio",
+      cardio: [
         "Jogging",
         "Running",
         "Cycling",
         "Swimming",
         "Circuit Training",
         "HIIT",
-        "Yoga"
-      ]
-    }
-};
+        "Yoga",
+      ],
+    },
+  ];
   
 const days = document.getElementById("days");
 const planner = document.getElementById("planner");
@@ -67,11 +68,28 @@ const planner = document.getElementById("planner");
     document.getElementById("days").appendChild(dFrag);
   }
   
-//   function fillInTheDayBox(dayName,day) 
+  function fillInTheDayBox(day, workout) {
+    let selectBodyPart = document.createElement("select");
+    console.log(workout[1]);
+    Array.prototype.forEach.call(workout, (element) => {
+      console.log(element);
+      let optionElement = document.createElement("option");
+      optionElement.value = element.part;
+      optionElement.textContent = element.part;
+      selectBodyPart.appendChild(optionElement);
+    });
+    day.appendChild(selectBodyPart);
+    let removeDay = document.createElement("button");
+    removeDay.textContent = "Remove day";
+    day.appendChild(removeDay);
+    let clearDay = document.createElement("button");
+    clearDay.textContent = "Clear All";
+    day.appendChild(clearDay);
+  }
 
 
   // Create filled for choosen week day
-  function createDayPlanner(dayName) {
+  function createDayPlanner(dayName,workout) {
     const day = document.createElement("div");
     day.classList.add("dayInPlanner");
     // day.textContent = dayName.innerText;
@@ -82,7 +100,7 @@ const planner = document.getElementById("planner");
     document.getElementById("planner").appendChild(day);
     day.appendChild(h2day);
 
-    fillInTheDayBox(dayName,day) 
+    fillInTheDayBox(day,workout); 
   }
 
 weekdays(Weekdays); 
@@ -100,7 +118,7 @@ weekDaysDiv.addEventListener("click", function (event) {
     else {
     event.target.classList.add("choosenDay");
     console.log(event.target.classList);
-    createDayPlanner(event.target);
+    createDayPlanner(event.target,workout);
     return;
     }}
 });
