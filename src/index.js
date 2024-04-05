@@ -53,9 +53,10 @@ const Weekdays = [
   
 const days = document.getElementById("days");
 const planner = document.getElementById("planner");
+const registration = document.getElementsByClassName("registration");
 
   
-  // Add days on the page
+// Add days on the page
   function weekdays(days) {
     const dFrag = document.createDocumentFragment();
     for (let i in days) {
@@ -68,8 +69,9 @@ const planner = document.getElementById("planner");
   }
   
 
-
+  // Add choosen day of week and create div with elements
   function fillInTheDayBox(day, workout) {
+    // Add buttons with workout's types
     const divPart = document.createElement("div");
     divPart.setAttribute('id', 'WorkoutPart')
     day.appendChild(divPart);
@@ -80,10 +82,12 @@ const planner = document.getElementById("planner");
         divPart.appendChild(optionElement);
       });
 
-
+    // Add div for future excesises block
     const divButton = document.createElement("div");
     divButton.setAttribute('id', 'ClearOrRemoveBtn')
     day.appendChild(divButton);
+
+    // Add div with buttons Save and Remove Day
     let excercisesDiv = document.createElement("div");
     excercisesDiv.classList.add("excercises")
     divButton.appendChild(excercisesDiv);
@@ -105,7 +109,6 @@ const planner = document.getElementById("planner");
   function createDayPlanner(dayName,workout) {
     const day = document.createElement("div");
     day.classList.add("dayInPlanner");
-    // day.textContent = dayName.innerText;
 
     const h2day = document.createElement("h2");
     h2day.textContent = dayName.innerText;
@@ -115,6 +118,8 @@ const planner = document.getElementById("planner");
 
     fillInTheDayBox(day,workout); 
   }
+
+
 
   function chooseWorkout(workoutName, workout,  exerciseDiv) {
 
@@ -181,9 +186,9 @@ const planner = document.getElementById("planner");
 
 
 weekdays(Weekdays);
-// workouts(workout); 
 
 
+// Fill div days with Week Days from Array
 const weekDaysDiv = document.getElementById("days");
 console.log(weekDaysDiv);
 weekDaysDiv.addEventListener("click", function (event) {
@@ -216,7 +221,7 @@ document.getElementById("removeAll").addEventListener("click", function(e) {
    });
 }) 
 
-// Click on Workouts button inside day div
+// Click on WORKOUT button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
@@ -233,7 +238,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
 });
 
 
-//Click on Workouts Remove day button inside day div
+//Click on Workouts REMOVE DAY button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
@@ -242,8 +247,6 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutRemove")
   ) {
-
-
     const dayDiv = clickedElement.closest(".dayInPlanner");
         dayDiv.remove();
 
@@ -254,7 +257,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 });
 
-//Click on Workouts Save day button inside day div
+//Click on Workouts SAVE day button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
@@ -270,7 +273,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 });
 
-//Click on Workouts Clear day button inside day div
+//Click on Workouts CLEAR day button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
@@ -286,31 +289,3 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 });
 
-
-
-// Add event listener to the save button
-document.getElementById("saveButton").addEventListener("click", function(event) {
-  event.preventDefault();
-
-  // Collect all checked checkboxes
-  const checkboxes = document.querySelectorAll(".checkbox");
-  const selectedWorkouts = [];
-  checkboxes.forEach(checkbox => {
-      if (checkbox.checked) {
-          selectedWorkouts.push(checkbox.value);
-      }
-  });
-
-  // Save the selected workouts (You can perform your save logic here)
-  console.log("Selected workouts:", selectedWorkouts);
-  alert("Workouts saved successfully!");
-});
-
-// Add event listeners to checkboxes
-const checkboxes = document.querySelectorAll(".checkbox");
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener("change", function(event) {
-      // You can perform any actions when a checkbox is checked/unchecked here
-      console.log("Checkbox state changed:", event.target.checked);
-  });
-});
