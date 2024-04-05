@@ -180,7 +180,7 @@ let exercisesArray = [];
 
       exercisesDiv.forEach((elementButton) => {
         // console.log("elementButton", elementButton);
-  
+        
         if (elementButton.classList.contains("choosenExercise")) {
           let exercises = document.createElement("p");
           exercises.textContent = elementButton.innerText;
@@ -191,6 +191,12 @@ let exercisesArray = [];
     trainingPlan.style.padding = "20px"
   }
 
+  function openWorkout(exerciseDiv) {
+    const parent = exerciseDiv.parentNode;
+    const sibling = parent.previousSibling;
+    const exercisesAll = Array.from(sibling.children);
+    exercisesAll.forEach((element) => (element.disabled = false));
+  }
 
 
 weekdays(Weekdays);
@@ -238,14 +244,6 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutPart")
   ) {
-  // console.log("Button inside day div is clicked" + clickedElement.textContent);
-
-  // const parentDiv = clickedElement.parentNode;
-  // console.log(`Parent div is: ` + parentDiv);
-  // console.log(`Parent div is id: ` + parentDiv.id);
-  // const parentDivUpper = parentDiv.parentNode;
-  // console.log(`Parent div upper is: ` + parentDivUpper);
-  // console.log(`Parent div upper is id: ` + parentDivUpper.id);
 
   clickedElement.disabled = true;
 
@@ -321,6 +319,8 @@ document.getElementById("planner").addEventListener("click", function (event) {
   while (exerciseDiv.firstChild) {
     exerciseDiv.removeChild(exerciseDiv.firstChild);
   }
+
+  openWorkout(exerciseDiv);
   // clickedElement.disabled = true;
   }
 });
