@@ -296,7 +296,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutSave")
   ) {
-    // console.log("Button Save inside day div is clicked");
+
 
   const parentDiv = clickedElement.parentNode.parentNode;
   const parentDivElement = document.getElementById(parentDiv.id);
@@ -317,7 +317,6 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 
   openWorkout(exerciseDiv);
-  // clickedElement.disabled = true;
   }
 });
 
