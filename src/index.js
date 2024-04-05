@@ -169,15 +169,15 @@ let exercisesArray = [];
 
 
   function saveWorkout(exerciseDiv, trainingPlan) {
+  // const header = document.createElement('h2');
+  // header.textContent = "My training plan: ";
+  // trainingPlan.appendChild(header);
+
     const exercisesAll = Array.from(exerciseDiv.children);
-    // console.log("exercisesAll", exercisesAll);
   
     exercisesAll.forEach((element) => {
       const exercisesDiv = Array.from(element.children);
-      // console.log("exercisesDiv", exercisesDiv);
-      // let workOutType = exercisesDiv.querySelector("p");
-      // let name = document.createElement("p");
-      // name.textNode = workOutType;
+
       exercisesDiv.forEach((elementButton) => {
         // console.log("elementButton", elementButton);
   
@@ -188,7 +188,7 @@ let exercisesArray = [];
         }
       });
     });
-
+    trainingPlan.style.padding = "20px"
   }
 
 
@@ -309,6 +309,12 @@ document.getElementById("planner").addEventListener("click", function (event) {
   const exerciseDiv = parentDivElement.querySelector(".excercises");
   const trainingPlan = parentDivElement.querySelector(".trainingPlan");
   
+ if (!trainingPlan.querySelector('h2')) 
+ { const header = document.createElement('h2');
+ header.textContent = "My training plan: ";
+ trainingPlan.appendChild(header);}
+
+
 
   saveWorkout(exerciseDiv, trainingPlan);
 

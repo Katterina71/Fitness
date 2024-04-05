@@ -64,14 +64,20 @@ body {
 
   .registration {
     margin: 20px 0;
-    width: 800px;
+    width: 400px;
     /* border: 1px solid #dd5511; */
     border-radius: 5px;
     background: linear-gradient(to top, #dd5511, rgb(246, 225, 188));
     /* background-color: rgb(254, 254, 254); */
     padding: 20px;
+    display: flex;
+    align-items: center;
   }
   
+  /* .trainingPlan {
+    padding: 30px;
+  } */
+
   button {
     color: white;
     padding: 14px 20px;
@@ -228,3 +234,51 @@ body {
   .workoutChecklist {
     margin: 10px;
   }
+
+
+  /* Styling form */
+
+input[type="text"],
+input[type="email"],
+input[type="checkbox"],
+input[type="button"] {
+  margin-bottom: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  padding: 10px; 
+  width: 250px; 
+}
+
+/* Specific style for the text and email inputs */
+input[type="text"],
+input[type="email"] {
+  display: block; /* Makes these inputs take the full width */
+}
+
+/* Styling for the checkbox */
+input[type="checkbox"] {
+  margin-top: 15px; /* Extra space above the checkbox */
+  width: auto; /* Override the width for checkbox */
+}
+
+/* Label styling */
+label {
+  display: block; /* Makes label take the full width, useful for alignment */
+  margin-top: -25px; /* Adjusts the position of the label closer to the checkbox */
+  margin-left: 25px; /* Indents the label to align with checkbox text */
+}
+
+/* Specific style for the print button */
+.buttonPrint {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  font-size: 16px; /* Larger text */
+  cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+  border: none; /* Removes the border */
+}
+
+/* Error message styling */
+#emailError {
+  color: red; /* Red text for errors */
+  font-size: 14px; /* Slightly smaller text */
+}
