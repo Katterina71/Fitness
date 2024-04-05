@@ -289,3 +289,63 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 });
 
+
+
+//validation form
+window.onload = function() {
+  const form = document.getElementById('registrationForm');
+  const printButton = document.querySelector('.buttonPrint');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const agreementCheckbox = document.getElementById('agreement');
+  const emailError = document.getElementById('emailError'); // Ensure this element exists in your HTML
+
+  // Function to validate email format
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    return re.test(String(email).toLowerCase());
+  }
+
+  // Function to check the form's validity
+  function checkFormValidity() {
+    const isEmailValid = validateEmail(emailInput.value.trim());
+    const isFormFilled = nameInput.value.trim() && emailInput.value.trim() && agreementCheckbox.checked;
+
+    if (!isFormFilled || !isEmailValid) {
+      let message = "Please make sure all fields are filled.";
+      if (!isEmailValid) {
+        message += " Also, ensure the email address is correct.";
+        emailInput.style.borderColor = 'red'; // Change border color to red for invalid email
+        if(emailError) emailError.style.display = 'block'; // Show error message if email is invalid
+      }
+      window.alert(message); // Show alert with the validation message
+      return false; // Form is not valid
+    } else {
+      if(emailError) emailError.style.display = 'none'; // Hide error message if email is valid
+      emailInput.style.borderColor = 'initial'; // Reset border color for valid email
+      return true; // Form is valid
+    }
+  }
+
+  // Remove disabling/enabling logic from input and checkbox listeners
+  nameInput.addEventListener('input', function() {
+    emailInput.style.borderColor = 'initial'; // Reset border color when user starts typing
+    if(emailError) emailError.style.display = 'none'; // Optionally, hide error message
+  });
+  
+  emailInput.addEventListener('input', function() {
+    emailInput.style.borderColor = 'initial'; // Reset border color when user starts typing
+    if(emailError) emailError.style.display = 'none'; // Optionally, hide error message
+  });
+  
+  agreementCheckbox.addEventListener('change', function() {
+    // This could be used for additional logic when the checkbox state changes
+  });
+
+  // Adjust functionality to the print button to check form validity before printing
+  printButton.addEventListener('click', function() {
+    if (checkFormValidity()) {
+      window.print(); // Print the document only if the form is valid
+    }
+  });
+};

@@ -180,10 +180,15 @@ body {
     cursor: pointer;
     width: 120px;
     background-color: #dd5511;
+    /* background-color: #a7a7a7; */
   }
 
   .buttonPrint:hover {
     background-color: #a8380c;
+  }
+
+  .buttonPrint:disabled {
+    background-color: #a7a7a7;
   }
 
   .choosenDay {
