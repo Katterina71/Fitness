@@ -100,6 +100,36 @@ body {
     background-color: #f0f0f0;
   }
 
+  .buttonWorkOutRemove {
+    color: #0ba1d4;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    border: 2px solid #0ba1d4 ;
+    cursor: pointer;
+    width: 120px;
+    background-color: #f0f0f0;
+  }
+
+  .buttonWorkOutSave {
+    color: #4caf50;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    border: 2px solid #4caf50 ;
+    cursor: pointer;
+    width: 120px;
+    background-color: #f0f0f0;
+  }
+
+  .buttonWorkOutClear {
+    color: #393939;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    border: 2px solid #393939 ;
+    cursor: pointer;
+    width: 120px;
+    background-color: #f0f0f0;
+  }
+
   
   #main {
     width: 1200px;

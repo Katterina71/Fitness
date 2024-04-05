@@ -105,12 +105,17 @@ const planner = document.getElementById("planner");
     const divButton = document.createElement("div");
     divButton.setAttribute('id', 'ClearOrRemoveBtn')
     day.appendChild(divButton);
+
+    let saveDay = document.createElement("button");
+    saveDay.textContent = "Save";
+    saveDay.classList.add("buttonWorkOutSave")
+    divButton.appendChild(saveDay);
+
     let removeDay = document.createElement("button");
     removeDay.textContent = "Remove day";
+    removeDay.classList.add("buttonWorkOutRemove")
     divButton.appendChild(removeDay);
-    let clearDay = document.createElement("button");
-    clearDay.textContent = "Clear All";
-    divButton.appendChild(clearDay);
+
   }
 
 
@@ -165,18 +170,69 @@ document.getElementById("removeAll").addEventListener("click", function(e) {
    });
 }) 
 
-
+// Click on Workouts button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
 
-  // Check if the clicked element is a button inside the day div
   if (
     clickedElement.nodeName === "BUTTON" &&
-    clickedElement.closest(".dayInPlanner")
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutPart")
   ) {
     // Button inside day div is clicked
     console.log("Button inside day div is clicked");
+  
+
+    // Perform further actions if needed
+  }
+});
+
+//Click on Workouts Remove day button inside day div
+document.getElementById("planner").addEventListener("click", function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+
+  if (
+    clickedElement.nodeName === "BUTTON" &&
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutRemove")
+  ) {
+
+    const div = document.getElementById("ClearOrRemoveBtn").parentElement;
+     div.remove();
+     const weekDaysButton = days.querySelectorAll(".buttonDay");
+     weekDaysButton.forEach(element => {
+         element.classList.remove("choosenDay");
+     });
+  }
+});
+
+//Click on Workouts Save day button inside day div
+document.getElementById("planner").addEventListener("click", function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+
+  if (
+    clickedElement.nodeName === "BUTTON" &&
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutSave")
+  ) {
+    // Button inside day div is clicked
+    console.log("Button Save inside day div is clicked");
+
+    // Perform further actions if needed
+  }
+});
+
+//Click on Workouts Clear day button inside day div
+document.getElementById("planner").addEventListener("click", function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+
+  if (
+    clickedElement.nodeName === "BUTTON" &&
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutClear")
+  ) {
+    // Button inside day div is clicked
+    console.log("Button Clear inside day div is clicked");
 
     // Perform further actions if needed
   }
