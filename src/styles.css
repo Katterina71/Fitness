@@ -209,7 +209,7 @@ body {
     background-color: #a8380c;
   }
 
-  .buttonPrint:disabled {
+  .buttonPrint:disabled .buttonWorkOutSave:disabled {
     background-color: #a7a7a7;
   }
 

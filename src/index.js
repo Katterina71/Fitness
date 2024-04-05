@@ -93,10 +93,17 @@ let exercisesArray = [];
     divButton.setAttribute('id', 'ClearOrRemoveBtn')
     day.appendChild(divButton);
 
+    
+
     // Add div with buttons Save and Remove Day
     let exercisesDiv = document.createElement("div");
     exercisesDiv.classList.add("excercises")
     divButton.appendChild(exercisesDiv);
+
+    // Add training plan
+    let trainingPlan = document.createElement("div");
+    trainingPlan.classList.add("trainingPlan")
+    divButton.appendChild(trainingPlan);
 
     let saveDay = document.createElement("button");
     saveDay.textContent = "Save";
@@ -141,8 +148,9 @@ let exercisesArray = [];
     }
   
     const exercisesDiv = document.createElement("div")
-    exercisesDiv.attributes = ('id', `${selectWorkout}`)
-
+    // exercisesDiv.setAttribute = ('id', `${selectWorkout}`)
+    exercisesDiv.setAttribute = ('id', 'training');
+    
     const workoutPart = document.createElement("p");
     workoutPart.innerText = selectWorkout.part;
     exercisesDiv.appendChild(workoutPart);
@@ -160,42 +168,28 @@ let exercisesArray = [];
   }
 
 
-  // function chooseWorkout(workoutName, workout) {
-  //   const checklistDiv = document.createElement("div");
-  //   checklistDiv.classList.add("workoutChecklist");
-  //   const selectWorkout = workout.find((element) => element.part === workoutName);
-  //   const workoutPart = document.createElement("p")
-  //   workoutPart.innerText = selectWorkout.part;
-  //   checklistDiv.appendChild(workoutPart);
+  function saveWorkout(exerciseDiv, trainingPlan) {
+    const exercisesAll = Array.from(exerciseDiv.children);
+    // console.log("exercisesAll", exercisesAll);
   
-  //   console.log(selectWorkout);
-  //   // Loop through each exercise in the workout
-  //   const exercise = selectWorkout.excercises;
-  //   exercise.forEach((exercise) => {
-  //     console.log(`Inside for in loop for ${exercise}`);
-  //     const checkbox = document.createElement("INPUT");
-  //     checkbox.type = "checkbox";
-  //     checkbox.value = exercise;
-  //     checkbox.id = exercise.toLowerCase().replace(/\s+/g, "-"); // Set unique ID for each checkbox
-  //     checkbox.classList.add("exerciseCheckbox");
+    exercisesAll.forEach((element) => {
+      const exercisesDiv = Array.from(element.children);
+      // console.log("exercisesDiv", exercisesDiv);
+      // let workOutType = exercisesDiv.querySelector("p");
+      // let name = document.createElement("p");
+      // name.textNode = workOutType;
+      exercisesDiv.forEach((elementButton) => {
+        // console.log("elementButton", elementButton);
   
-  //     // Create a label for the checkbox
-  //     const label = document.createElement("label");
-  //     label.textContent = exercise;
-  //     label.setAttribute("for", checkbox.id);
-  
-  //     // Append checkbox and label to the checklist div
-  //     checklistDiv.appendChild(checkbox);
-  //     checklistDiv.appendChild(label);
-  //   });
-    
-  //   // Append checklist div to the day div
-    // const dayDiv = document.querySelector(".dayInPlanner");
-    // const clearOrRemoveBtnDiv = document.getElementById("ClearOrRemoveBtn");
-    // dayDiv.insertBefore(checklistDiv, clearOrRemoveBtnDiv);
- 
-  // }
+        if (elementButton.classList.contains("choosenExercise")) {
+          let exercises = document.createElement("p");
+          exercises.textContent = elementButton.innerText;
+          trainingPlan.appendChild(exercises);
+        }
+      });
+    });
 
+  }
 
 
 
@@ -256,11 +250,9 @@ document.getElementById("planner").addEventListener("click", function (event) {
   clickedElement.disabled = true;
 
   const parentDiv = clickedElement.parentNode.parentNode;
-  // console.log(`One step: ` + parentDiv.id);
   const parentDivElement = document.getElementById(parentDiv.id);
-  console.log(`One step: ` + parentDivElement);
   const exerciseDiv = parentDivElement.querySelector(".excercises");
-  // console.log(`Exercise div is: ` + exerciseDiv.classList);
+
   chooseWorkout(clickedElement.textContent, workout,  exerciseDiv);
   
   }
@@ -310,8 +302,20 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutSave")
   ) {
-    console.log("Button Save inside day div is clicked");
-    
+    // console.log("Button Save inside day div is clicked");
+
+  const parentDiv = clickedElement.parentNode.parentNode;
+  const parentDivElement = document.getElementById(parentDiv.id);
+  const exerciseDiv = parentDivElement.querySelector(".excercises");
+  const trainingPlan = parentDivElement.querySelector(".trainingPlan");
+  
+
+  saveWorkout(exerciseDiv, trainingPlan);
+
+  while (exerciseDiv.firstChild) {
+    exerciseDiv.removeChild(exerciseDiv.firstChild);
+  }
+  // clickedElement.disabled = true;
   }
 });
 
