@@ -104,7 +104,7 @@ body {
     color: #0ba1d4;
     padding: 14px 20px;
     margin: 10px 10px;
-    border: 2px solid #0ba1d4 ;
+    border: 2px solid #444444 ;
     cursor: pointer;
     width: 120px;
     background-color: #f0f0f0;
@@ -130,6 +130,15 @@ body {
     background-color: #f0f0f0;
   }
 
+  .buttonExcercise {
+    color: #0ba1d4;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    border: 2px solid #0ba1d4 ;
+    cursor: pointer;
+    width: 120px;
+    background-color: #f0f0f0;
+  }
   
   #main {
     width: 1200px;
@@ -139,4 +148,16 @@ body {
 
   .choosenDay {
     background-color: #808080; 
+  }
+
+  .exerciseCheckbox {
+    margin-right: 8px; 
+  }
+  
+  .exerciseCheckbox + label {
+    margin-left: 4px; 
+  }
+
+  .workoutChecklist {
+    margin: 10px;
   }
