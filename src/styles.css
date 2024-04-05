@@ -29,10 +29,12 @@ body {
 
   #main {
     /* position: absolute; */
-    background-color: rgb(254, 254, 254);
+    background: linear-gradient(to top, rgb(146, 246, 200), rgb(246, 225, 188));
     border-radius: 10px;
     padding: 20px;
     height: fit-content;
+    width: 900px;
+    margin-left: 25%;
   }
   
   h1 {
@@ -50,9 +52,27 @@ body {
     width: 60%;
   }
 
+  /* week day class*/
+  .dayInPlanner {
+    padding: 20px;
+    margin: 20px 0;
+    width: 800px;
+    border-radius: 5px;
+    background-color: rgb(254, 254, 254); 
+    /* background-color: #f0f0f0; */
+  }
+
+  .registration {
+    margin: 20px 0;
+    width: 800px;
+    /* border: 1px solid #dd5511; */
+    border-radius: 5px;
+    background: linear-gradient(to top, #dd5511, rgb(246, 225, 188));
+    /* background-color: rgb(254, 254, 254); */
+    padding: 20px;
+  }
   
   button {
-    background-color: #4caf50; /* A green color */
     color: white;
     padding: 14px 20px;
     margin: 20px 0;
@@ -66,14 +86,8 @@ body {
     background-color: #45a049;
   }
   
-  .dayInPlanner {
-    border: 2 px solid #4caf50;
-    padding: 20px;
-    margin: 20px 0;
-    width: 600px;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-  }
+
+
   
   .buttonDay {
     background-color: #dd5511; /* A green color */
@@ -85,10 +99,6 @@ body {
     width: 150px;
   }
   
-  .buttonDay:hover {
-    background-color: #45a049;
-  }
-
 
   .buttonWorkOutPart {
     color: #dd5511;
@@ -97,37 +107,47 @@ body {
     border: 2px solid #dd5511 ;
     cursor: pointer;
     width: 120px;
-    background-color: #f0f0f0;
+    cursor: pointer;
+    background-color: rgb(254, 254, 254);
+  }
+
+  .buttonWorkOutPart:hover {
+    background-color: #dd5511;
+    color:rgb(254, 254, 254);
   }
 
   .buttonWorkOutRemove {
-    color: #0ba1d4;
+    color: #f0f0f0;
     padding: 14px 20px;
     margin: 10px 10px;
-    border: 2px solid #444444 ;
     cursor: pointer;
     width: 120px;
-    background-color: #f0f0f0;
+    background-color: #393939;
+  }
+
+  .buttonWorkOutRemove:hover {
+    background-color: #4f4e4e;
   }
 
   .buttonWorkOutSave {
-    color: #4caf50;
+    color: #f0f0f0;
     padding: 14px 20px;
     margin: 10px 10px;
-    border: 2px solid #4caf50 ;
     cursor: pointer;
     width: 120px;
-    background-color: #f0f0f0;
+    background-color: #4caf50;
   }
 
+  .buttonWorkOutSave:hover {
+    background-color: #45a049;
+  }
   .buttonWorkOutClear {
-    color: #393939;
+    color: #f0f0f0;
     padding: 14px 20px;
     margin: 10px 10px;
-    border: 2px solid #393939 ;
     cursor: pointer;
     width: 120px;
-    background-color: #f0f0f0;
+    background-color: #393939;
   }
 
   .buttonExcercise {
@@ -140,10 +160,30 @@ body {
     background-color: #f0f0f0;
   }
   
-  #main {
-    width: 1200px;
-    margin: 0 25%;
-    padding-top: 50px;
+  .buttonRemoverAll {
+    color: #f0f0f0;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    cursor: pointer;
+    width: 120px;
+    background-color: #393939;
+  }
+
+  .buttonRemoverAll:hover {
+    background-color: #4f4e4e;
+  }
+
+  .buttonPrint {
+    color: #f0f0f0;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    cursor: pointer;
+    width: 120px;
+    background-color: #dd5511;
+  }
+
+  .buttonPrint:hover {
+    background-color: #a8380c;
   }
 
   .choosenDay {
