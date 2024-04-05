@@ -116,6 +116,12 @@ body {
     color:rgb(254, 254, 254);
   }
 
+  .buttonWorkOutPart:disabled {
+    background-color: #b2b0af;
+    border: 0;
+    color:rgb(254, 254, 254);
+  }
+
   .buttonWorkOutRemove {
     color: #f0f0f0;
     padding: 14px 20px;
@@ -150,16 +156,22 @@ body {
     background-color: #393939;
   }
 
-  .buttonExcercise {
+  .buttonExcecises{
     color: #0ba1d4;
     padding: 14px 20px;
     margin: 10px 10px;
     border: 2px solid #0ba1d4 ;
     cursor: pointer;
-    width: 120px;
+    width: 140px;
     background-color: #f0f0f0;
   }
   
+  .buttonExcecises:hover, .buttonExcecises:active {
+    border: 0 ;
+    background-color: #0ba1d4;
+    color: #f0f0f0
+  }
+
   .buttonRemoverAll {
     color: #f0f0f0;
     padding: 14px 20px;

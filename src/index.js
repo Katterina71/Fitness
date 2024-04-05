@@ -55,6 +55,9 @@ const days = document.getElementById("days");
 const planner = document.getElementById("planner");
 const registration = document.getElementsByClassName("registration");
 
+//array for choosen exsecises:
+let excecisesArray = [];
+
   
 // Add days on the page
   function weekdays(days) {
@@ -73,7 +76,10 @@ const registration = document.getElementsByClassName("registration");
   function fillInTheDayBox(day, workout) {
     // Add buttons with workout's types
     const divPart = document.createElement("div");
-    divPart.setAttribute('id', 'WorkoutPart')
+    const firstP = day.querySelector("h2"); // Gets the first <p> element within the <div>
+    const firstPText = firstP.textContent;
+    divPart.setAttribute("id", `${firstPText} workout`);
+  
     day.appendChild(divPart);
     workout.forEach((element) => {
         let optionElement = document.createElement("button");
@@ -109,6 +115,7 @@ const registration = document.getElementsByClassName("registration");
   function createDayPlanner(dayName,workout) {
     const day = document.createElement("div");
     day.classList.add("dayInPlanner");
+    day.setAttribute("id", `${dayName.innerText}`);
 
     const h2day = document.createElement("h2");
     h2day.textContent = dayName.innerText;
@@ -120,29 +127,36 @@ const registration = document.getElementsByClassName("registration");
   }
 
 
+  // Add excesises 
+  function chooseWorkout(workoutName, workout,  exceciseDiv) {
 
-  function chooseWorkout(workoutName, workout,  exerciseDiv) {
-
+    
     const selectWorkout = workout.find((element) => element.part === workoutName);
+    // console.log(selectWorkout);
 
-     // Check if workout was found
+    // Check if workout was found
     if (!selectWorkout) {
-      console.error('Workout not found:', workoutName);
+      console.error("Workout not found:", workoutName);
       return; // Exit the function if no workout is found
     }
-    
+  
+    const excecisesDiv = document.createElement("div")
+    excecisesDiv.setAttribute('id', `${selectWorkout.part}`)
+
     const workoutPart = document.createElement("p");
     workoutPart.innerText = selectWorkout.part;
-    exerciseDiv.appendChild(workoutPart);
+    excecisesDiv.appendChild(workoutPart);
 
-
-    const exercises = selectWorkout.exercises; 
-    exercises.forEach((exercise) => {
+    const excecises = selectWorkout.excecises;
+    excecises.forEach((exercise) => {
       let optionElement = document.createElement("button");
       optionElement.textContent = exercise;
-      optionElement.classList.add("buttonExercise"); 
-      exerciseDiv.appendChild(optionElement);
+      optionElement.classList.add("buttonExcecises");
+      optionElement.setAttribute('id', `${exercise}`)
+      excecisesDiv.appendChild(optionElement);
     });
+
+    exceciseDiv.appendChild(excecisesDiv);
   }
 
 
@@ -230,8 +244,23 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutPart")
   ) {
-  console.log("Button inside day div is clicked" + clickedElement.textContent);
-  const  exerciseDiv = clickedElement.closest(".excercisesDiv");
+  // console.log("Button inside day div is clicked" + clickedElement.textContent);
+
+  // const parentDiv = clickedElement.parentNode;
+  // console.log(`Parent div is: ` + parentDiv);
+  // console.log(`Parent div is id: ` + parentDiv.id);
+  // const parentDivUpper = parentDiv.parentNode;
+  // console.log(`Parent div upper is: ` + parentDivUpper);
+  // console.log(`Parent div upper is id: ` + parentDivUpper.id);
+
+  clickedElement.disabled = true;
+
+  const parentDiv = clickedElement.parentNode.parentNode;
+  // console.log(`One step: ` + parentDiv.id);
+  const parentDivElement = document.getElementById(parentDiv.id);
+  console.log(`One step: ` + parentDivElement);
+  const exerciseDiv = parentDivElement.querySelector(".excercises");
+  // console.log(`Exercise div is: ` + exerciseDiv.classList);
   chooseWorkout(clickedElement.textContent, workout,  exerciseDiv);
   
   }
@@ -249,7 +278,6 @@ document.getElementById("planner").addEventListener("click", function (event) {
   ) {
     const dayDiv = clickedElement.closest(".dayInPlanner");
         dayDiv.remove();
-
         const weekDaysButton = days.querySelectorAll(".buttonDay");
         weekDaysButton.forEach(element => {
             element.classList.remove("choosenDay");
@@ -261,33 +289,25 @@ document.getElementById("planner").addEventListener("click", function (event) {
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
-
   if (
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutSave")
   ) {
-    // Button inside day div is clicked
     console.log("Button Save inside day div is clicked");
-
-    // Perform further actions if needed
   }
 });
 
 //Click on Workouts CLEAR day button inside day div
-document.getElementById("planner").addEventListener("click", function (event) {
-  event.preventDefault();
-  const clickedElement = event.target;
-
-  if (
-    clickedElement.nodeName === "BUTTON" &&
-    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutClear")
-  ) {
-    // Button inside day div is clicked
-    console.log("Button Clear inside day div is clicked");
-
-    // Perform further actions if needed
-  }
-});
+// document.getElementById("planner").addEventListener("click", function (event) {
+//   event.preventDefault();
+//   const clickedElement = event.target;
+//   if (
+//     clickedElement.nodeName === "BUTTON" &&
+//     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutClear")
+//   ) {
+//     console.log("Button Clear inside day div is clicked");
+//   }
+// });
 
 
 
