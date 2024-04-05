@@ -8,10 +8,11 @@ Visit web application: [Fitness Routine Planner](https://htmlpreview.github.io/?
 
 ## **Objectives**
 
-- **Dynamic User Experience**: Utilize DOM properties, methods, and techniques to create an interactive and responsive web application.
-- **BOM Utilization**: Employ BOM properties, methods, and techniques to enhance the functionality of the web application, providing a seamless user experience.
-- **Event-Driven Programming**: Demonstrate proficiency with event-driven programming by implementing responsive, interactive features that react to user inputs and actions.
-- **Form Validation**: Implement basic form validation to ensure user inputs are correct before submission, using a combination of built-in HTML validation attributes and DOM-event-driven JavaScript validation.
+- **Dynamic User Experience**: Utilized DOM properties, methods, and techniques to create an interactive and responsive web application.
+- **BOM Utilization**: Emploied BOM properties, methods, and techniques to enhance the functionality of the web application, providing a seamless user experience.
+- **BOM Usage**: Used the window.onload method to ensure my script runs after the page fully loads, and window.print() to implement the print functionality when the Print button is clicked.
+- **Event-Driven Programming**: Demonstrated proficiency with event-driven programming by implementing responsive, interactive features that react to user inputs and actions.
+- **Form Validation**: Implemented basic form validation to ensure user inputs are correct before submission, using a combination of built-in HTML validation attributes and DOM-event-driven JavaScript validation.
 
 ## **Features**
 
