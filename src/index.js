@@ -169,10 +169,6 @@ let exercisesArray = [];
 
 
   function saveWorkout(exerciseDiv, trainingPlan) {
-  // const header = document.createElement('h2');
-  // header.textContent = "My training plan: ";
-  // trainingPlan.appendChild(header);
-
     const exercisesAll = Array.from(exerciseDiv.children);
   
     exercisesAll.forEach((element) => {
