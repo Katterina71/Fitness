@@ -11,24 +11,25 @@ const Weekdays = [
   const workout = [
     {
       part: "Upper Body",
-      chest: ["Push-Ups", "Bench Press", "Incline Dumbbell Press", "Chest Flyes"],
-      back: ["Pull-Ups", "Deadlifts", "Bent-Over Rows", "Lat Pulldowns"],
-      shoulders: [
-        "Front-Squat",
-        "Overhead Press",
-        "Lateral Raises",
-        "Front Raises",
-        "Shrugs",
+      excercises: [
+        "Push-Ups",
+        "Bench Press",
+        "Incline Dumbbell Press",
+        "Chest Flyes",
+        "Pull-Ups",
+        "Deadlifts",
+        "Bent-Over Rows",
+        "Lat Pulldowns",
       ],
     },
     {
       part: "Lower Body",
-      legs: ["Squats", "Lunges", "Deadlifts", "Leg Press", "Leg Curls"],
-      calves: ["Standing Calf Raises", "Seated Calf Raises"],
+      excercises: ["Squats", "Lunges", "Deadlifts", "Leg Press", "Leg Curls", "Standing Calf Raises", "Seated Calf Raises"],
+  
     },
     {
       part: "Core",
-      core: [
+      excercises: [
         "Planks",
         "Abdominal Crunches",
         "Leg Raises",
@@ -38,7 +39,7 @@ const Weekdays = [
     },
     {
       part: "Cardio",
-      cardio: [
+      excercises: [
         "Jogging",
         "Running",
         "Cycling",
@@ -134,6 +135,46 @@ const planner = document.getElementById("planner");
     fillInTheDayBox(day,workout); 
   }
 
+
+  function chooseWorkout(workoutName, workout) {
+    const checklistDiv = document.createElement("div");
+    checklistDiv.classList.add("workoutChecklist");
+    const selectWorkout = workout.find((element) => element.part === workoutName);
+    const workoutPart = document.createElement("p")
+    workoutPart.innerText = selectWorkout.part;
+    checklistDiv.appendChild(workoutPart);
+  
+    console.log(selectWorkout);
+    // Loop through each exercise in the workout
+    const exercise = selectWorkout.excercises;
+    exercise.forEach((exercise) => {
+      console.log(`Inside for in loop for ${exercise}`);
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.value = exercise;
+      checkbox.id = exercise.toLowerCase().replace(/\s+/g, "-"); // Set unique ID for each checkbox
+      checkbox.classList.add("exerciseCheckbox");
+  
+      // Create a label for the checkbox
+      const label = document.createElement("label");
+      label.textContent = exercise;
+      label.setAttribute("for", checkbox.id);
+  
+      // Append checkbox and label to the checklist div
+      checklistDiv.appendChild(checkbox);
+      checklistDiv.appendChild(label);
+    });
+    
+    // Append checklist div to the day div
+    const dayDiv = document.querySelector(".dayInPlanner");
+    const clearOrRemoveBtnDiv = document.getElementById("ClearOrRemoveBtn");
+    dayDiv.insertBefore(checklistDiv, clearOrRemoveBtnDiv);
+
+  }
+
+
+
+
 weekdays(Weekdays);
 // workouts(workout); 
 
@@ -179,11 +220,19 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.nodeName === "BUTTON" &&
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutPart")
   ) {
-    // Button inside day div is clicked
-    console.log("Button inside day div is clicked");
+    
+    console.log("Button inside day div is clicked" + clickedElement.textContent);
+    chooseWorkout(clickedElement.textContent, workout);
   
 
-    // Perform further actions if needed
+    // // Disable not chosen buttons
+    // const dayDiv = clickedElement.closest("WorkoutPart");
+    // const buttons = dayDiv.querySelectorAll(".buttonWorkOutPart");
+    // buttons.forEach(button => {
+    //   if (button !== clickedElement) {
+    //     button.disabled = true;
+    //   }
+    // });
   }
 });
 
