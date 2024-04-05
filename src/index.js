@@ -266,6 +266,23 @@ document.getElementById("planner").addEventListener("click", function (event) {
   }
 });
 
+// Choose exersices 
+document.getElementById("planner").addEventListener("click", function (event) {
+  event.preventDefault();
+  const clickedElement = event.target;
+  if (
+    clickedElement.nodeName === "BUTTON" &&
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonExercises") || clickedElement.closest(".choosenExercise")
+  ) {
+    if (event.target.classList.contains("choosenExercise")) { 
+      event.target.classList.remove("choosenExercise");
+      event.target.classList.add("buttonExercises"); return}
+    else {
+    event.target.classList.remove("buttonExercises");
+    event.target.classList.add("choosenExercise");
+    return;
+    }}
+});
 
 //Click on Workouts REMOVE DAY button inside day div
 document.getElementById("planner").addEventListener("click", function (event) {
@@ -294,6 +311,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutSave")
   ) {
     console.log("Button Save inside day div is clicked");
+    
   }
 });
 

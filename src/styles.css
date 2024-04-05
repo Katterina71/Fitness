@@ -165,12 +165,22 @@ body {
     width: 140px;
     background-color: #f0f0f0;
   }
-  
-  .buttonExercises:hover, .buttonExercises:active {
+
+  .buttonExercises:hover {
     border: 0 ;
     background-color: #0ba1d4;
     color: #f0f0f0
   }
+  
+  .choosenExercise {
+    color: #f0f0f0;
+    padding: 14px 20px;
+    margin: 10px 10px;
+    cursor: pointer;
+    width: 140px;
+    background-color: #0ba1d4;
+  }
+
 
   .buttonRemoverAll {
     color: #f0f0f0;
