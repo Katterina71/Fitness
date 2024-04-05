@@ -246,12 +246,19 @@ document.getElementById("planner").addEventListener("click", function (event) {
     clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonWorkOutRemove")
   ) {
 
-    const div = document.getElementById("ClearOrRemoveBtn").parentElement;
-     div.remove();
-     const weekDaysButton = days.querySelectorAll(".buttonDay");
-     weekDaysButton.forEach(element => {
-         element.classList.remove("choosenDay");
-     });
+    // const div = document.getElementById("ClearOrRemoveBtn").parentElement;
+    //  div.remove();
+    //  const weekDaysButton = days.querySelectorAll(".buttonDay");
+    //  weekDaysButton.forEach(element => {
+    //      element.classList.remove("choosenDay");
+    //  });
+    const dayDiv = clickedElement.closest(".dayInPlanner");
+        dayDiv.remove();
+
+        const weekDaysButton = days.querySelectorAll(".buttonDay");
+        weekDaysButton.forEach(element => {
+            element.classList.remove("choosenDay");
+        });
   }
 });
 
@@ -285,4 +292,33 @@ document.getElementById("planner").addEventListener("click", function (event) {
 
     // Perform further actions if needed
   }
+});
+
+
+
+// Add event listener to the save button
+document.getElementById("saveButton").addEventListener("click", function(event) {
+  event.preventDefault();
+
+  // Collect all checked checkboxes
+  const checkboxes = document.querySelectorAll(".checkbox");
+  const selectedWorkouts = [];
+  checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+          selectedWorkouts.push(checkbox.value);
+      }
+  });
+
+  // Save the selected workouts (You can perform your save logic here)
+  console.log("Selected workouts:", selectedWorkouts);
+  alert("Workouts saved successfully!");
+});
+
+// Add event listeners to checkboxes
+const checkboxes = document.querySelectorAll(".checkbox");
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener("change", function(event) {
+      // You can perform any actions when a checkbox is checked/unchecked here
+      console.log("Checkbox state changed:", event.target.checked);
+  });
 });
