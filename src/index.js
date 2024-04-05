@@ -315,37 +315,31 @@ window.onload = function() {
       let message = "Please make sure all fields are filled.";
       if (!isEmailValid) {
         message += " Also, ensure the email address is correct.";
-        emailInput.style.borderColor = 'red'; // Change border color to red for invalid email
+        emailInput.style.borderColor = 'red'; 
         if(emailError) emailError.style.display = 'block'; // Show error message if email is invalid
       }
       window.alert(message); // Show alert with the validation message
       return false; // Form is not valid
     } else {
-      if(emailError) emailError.style.display = 'none'; // Hide error message if email is valid
-      emailInput.style.borderColor = 'initial'; // Reset border color for valid email
+      if(emailError) emailError.style.display = 'none'; 
+      emailInput.style.borderColor = 'initial'; 
       return true; // Form is valid
     }
   }
 
   // Remove disabling/enabling logic from input and checkbox listeners
   nameInput.addEventListener('input', function() {
-    emailInput.style.borderColor = 'initial'; // Reset border color when user starts typing
-    if(emailError) emailError.style.display = 'none'; // Optionally, hide error message
+    emailInput.style.borderColor = 'initial'; 
   });
   
   emailInput.addEventListener('input', function() {
     emailInput.style.borderColor = 'initial'; // Reset border color when user starts typing
-    if(emailError) emailError.style.display = 'none'; // Optionally, hide error message
   });
   
-  agreementCheckbox.addEventListener('change', function() {
-    // This could be used for additional logic when the checkbox state changes
-  });
-
   // Adjust functionality to the print button to check form validity before printing
   printButton.addEventListener('click', function() {
     if (checkFormValidity()) {
-      window.print(); // Print the document only if the form is valid
+      window.print(); 
     }
   });
 };
