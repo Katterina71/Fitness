@@ -156,7 +156,7 @@ body {
     background-color: #393939;
   }
 
-  .buttonExcecises{
+  .buttonExercises{
     color: #0ba1d4;
     padding: 14px 20px;
     margin: 10px 10px;
@@ -166,7 +166,7 @@ body {
     background-color: #f0f0f0;
   }
   
-  .buttonExcecises:hover, .buttonExcecises:active {
+  .buttonExercises:hover, .buttonExercises:active {
     border: 0 ;
     background-color: #0ba1d4;
     color: #f0f0f0

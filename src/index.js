@@ -11,7 +11,7 @@ const Weekdays = [
   const workout = [
     {
       part: "Upper Body",
-      excecises: [
+      exercises: [
         "Push-Ups",
         "Bench Press",
         "Incline Dumbbell Press",
@@ -24,12 +24,12 @@ const Weekdays = [
     },
     {
       part: "Lower Body",
-      excecises: ["Squats", "Lunges", "Deadlifts", "Leg Press", "Leg Curls", "Standing Calf Raises", "Seated Calf Raises"],
+      exercises: ["Squats", "Lunges", "Deadlifts", "Leg Press", "Leg Curls", "Standing Calf Raises", "Seated Calf Raises"],
   
     },
     {
       part: "Core",
-      excecises: [
+      exercises: [
         "Planks",
         "Abdominal Crunches",
         "Leg Raises",
@@ -39,7 +39,7 @@ const Weekdays = [
     },
     {
       part: "Cardio",
-      excecises: [
+      exercises: [
         "Jogging",
         "Running",
         "Cycling",
@@ -56,7 +56,7 @@ const planner = document.getElementById("planner");
 const registration = document.getElementsByClassName("registration");
 
 //array for choosen exsecises:
-let excecisesArray = [];
+let exercisesArray = [];
 
   
 // Add days on the page
@@ -94,9 +94,9 @@ let excecisesArray = [];
     day.appendChild(divButton);
 
     // Add div with buttons Save and Remove Day
-    let excercisesDiv = document.createElement("div");
-    excercisesDiv.classList.add("excercises")
-    divButton.appendChild(excercisesDiv);
+    let exercisesDiv = document.createElement("div");
+    exercisesDiv.classList.add("excercises")
+    divButton.appendChild(exercisesDiv);
 
     let saveDay = document.createElement("button");
     saveDay.textContent = "Save";
@@ -128,7 +128,7 @@ let excecisesArray = [];
 
 
   // Add excesises 
-  function chooseWorkout(workoutName, workout,  exceciseDiv) {
+  function chooseWorkout(workoutName, workout,  exerciseDiv) {
 
     
     const selectWorkout = workout.find((element) => element.part === workoutName);
@@ -140,23 +140,23 @@ let excecisesArray = [];
       return; // Exit the function if no workout is found
     }
   
-    const excecisesDiv = document.createElement("div")
-    excecisesDiv.setAttribute('id', `${selectWorkout.part}`)
+    const exercisesDiv = document.createElement("div")
+    exercisesDiv.attributes = ('id', `${selectWorkout}`)
 
     const workoutPart = document.createElement("p");
     workoutPart.innerText = selectWorkout.part;
-    excecisesDiv.appendChild(workoutPart);
+    exercisesDiv.appendChild(workoutPart);
 
-    const excecises = selectWorkout.excecises;
-    excecises.forEach((exercise) => {
+    const exercises = selectWorkout.exercises;
+    exercises.forEach((exercise) => {
       let optionElement = document.createElement("button");
       optionElement.textContent = exercise;
-      optionElement.classList.add("buttonExcecises");
+      optionElement.classList.add("buttonExercises");
       optionElement.setAttribute('id', `${exercise}`)
-      excecisesDiv.appendChild(optionElement);
+      exercisesDiv.appendChild(optionElement);
     });
 
-    exceciseDiv.appendChild(excecisesDiv);
+    exerciseDiv.appendChild(exercisesDiv);
   }
 
 
