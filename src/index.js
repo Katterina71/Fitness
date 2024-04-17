@@ -55,7 +55,7 @@ const days = document.getElementById("days");
 const planner = document.getElementById("planner");
 const registration = document.getElementsByClassName("registration");
 
-//array for choosen exsecises:
+//array for chosen exercises:
 let exercisesArray = [];
 
   
@@ -72,7 +72,7 @@ let exercisesArray = [];
   }
   
 
-  // Add choosen day of week and create div with elements
+  // Add chosen day of week and create div with elements
   function fillInTheDayBox(day, workout) {
     // Add buttons with workout's types
     const divPart = document.createElement("div");
@@ -88,7 +88,7 @@ let exercisesArray = [];
         divPart.appendChild(optionElement);
       });
 
-    // Add div for future excesises block
+    // Add div for future exercises block
     const divButton = document.createElement("div");
     divButton.setAttribute('id', 'ClearOrRemoveBtn')
     day.appendChild(divButton);
@@ -97,7 +97,7 @@ let exercisesArray = [];
 
     // Add div with buttons Save and Remove Day
     let exercisesDiv = document.createElement("div");
-    exercisesDiv.classList.add("excercises")
+    exercisesDiv.classList.add("exercises")
     divButton.appendChild(exercisesDiv);
 
     // Add training plan
@@ -118,7 +118,7 @@ let exercisesArray = [];
   }
 
 
-  // Create filled for choosen week day
+  // Create filled for chosen week day
   function createDayPlanner(dayName,workout) {
     const day = document.createElement("div");
     day.classList.add("dayInPlanner");
@@ -134,7 +134,7 @@ let exercisesArray = [];
   }
 
 
-  // Add excesises 
+  // Add exercises 
   function chooseWorkout(workoutName, workout,  exerciseDiv) {
 
     
@@ -177,7 +177,7 @@ let exercisesArray = [];
       exercisesDiv.forEach((elementButton) => {
         // console.log("elementButton", elementButton);
         
-        if (elementButton.classList.contains("choosenExercise")) {
+        if (elementButton.classList.contains("chosenExercise")) {
           let exercises = document.createElement("p");
           exercises.textContent = elementButton.innerText;
           trainingPlan.appendChild(exercises);
@@ -207,9 +207,9 @@ weekDaysDiv.addEventListener("click", function (event) {
     return;
   }
   else {
-    if (event.target.classList.contains("choosenDay")) { return}
+    if (event.target.classList.contains("chosenDay")) { return}
     else {
-    event.target.classList.add("choosenDay");
+    event.target.classList.add("chosenDay");
     console.log(event.target.classList);
     createDayPlanner(event.target,workout);
     return;
@@ -227,7 +227,7 @@ document.getElementById("removeAll").addEventListener("click", function(e) {
    
    const weekDaysButton = days.querySelectorAll(".buttonDay");
    weekDaysButton.forEach(element => {
-       element.classList.remove("choosenDay");
+       element.classList.remove("chosenDay");
    });
 }) 
 
@@ -258,14 +258,14 @@ document.getElementById("planner").addEventListener("click", function (event) {
   const clickedElement = event.target;
   if (
     clickedElement.nodeName === "BUTTON" &&
-    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonExercises") || clickedElement.closest(".choosenExercise")
+    clickedElement.closest(".dayInPlanner") && clickedElement.closest(".buttonExercises") || clickedElement.closest(".chosenExercise")
   ) {
-    if (event.target.classList.contains("choosenExercise")) { 
-      event.target.classList.remove("choosenExercise");
+    if (event.target.classList.contains("chosenExercise")) { 
+      event.target.classList.remove("chosenExercise");
       event.target.classList.add("buttonExercises"); return}
     else {
     event.target.classList.remove("buttonExercises");
-    event.target.classList.add("choosenExercise");
+    event.target.classList.add("chosenExercise");
     return;
     }}
 });
@@ -283,7 +283,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
         dayDiv.remove();
         const weekDaysButton = days.querySelectorAll(".buttonDay");
         weekDaysButton.forEach(element => {
-            element.classList.remove("choosenDay");
+            element.classList.remove("chosenDay");
         });
   }
 });
