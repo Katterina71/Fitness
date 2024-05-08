@@ -245,14 +245,14 @@ document.getElementById("planner").addEventListener("click", function (event) {
 
   const parentDiv = clickedElement.parentNode.parentNode;
   const parentDivElement = document.getElementById(parentDiv.id);
-  const exerciseDiv = parentDivElement.querySelector(".excercises");
+  const exerciseDiv = parentDivElement.querySelector(".exercises");
 
   chooseWorkout(clickedElement.textContent, workout,  exerciseDiv);
   
   }
 });
 
-// Choose exersices 
+// Choose exercises 
 document.getElementById("planner").addEventListener("click", function (event) {
   event.preventDefault();
   const clickedElement = event.target;
@@ -300,7 +300,7 @@ document.getElementById("planner").addEventListener("click", function (event) {
 
   const parentDiv = clickedElement.parentNode.parentNode;
   const parentDivElement = document.getElementById(parentDiv.id);
-  const exerciseDiv = parentDivElement.querySelector(".excercises");
+  const exerciseDiv = parentDivElement.querySelector(".exercises");
   const trainingPlan = parentDivElement.querySelector(".trainingPlan");
   
  if (!trainingPlan.querySelector('h2')) 
