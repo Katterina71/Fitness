@@ -5,7 +5,9 @@
 This Fitness Planner is a web application designed to offer a dynamic user experience for users looking to organize their fitness routine for a week. Utilizing the Document Object Model (DOM) and Browser Object Model (BOM), the application allows users to fill in their weekly fitness activities, view their planned exercises, and print the schedule for offline use. This application demonstrates proficiency in event-driven programming, leveraging DOM events to create an interactive interface that responds to user inputs in real time.
 
 Visit web application: [Fitness Routine Planner](https://katterina71.github.io/Fitness/)
-![Example](https://github.com/Katterina71/Fitness/blob/main/info/fitness-example.gif)
+
+## **Example**
+![](https://github.com/Katterina71/Fitness/blob/main/info/fitness-example.gif)
 
 
 ## **Objectives**
