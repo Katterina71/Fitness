@@ -6,6 +6,7 @@ This Fitness Planner is a web application designed to offer a dynamic user exper
 
 Visit web application: [Fitness Routine Planner](https://katterina71.github.io/Fitness/)
 
+
 ## **Objectives**
 
 - **Dynamic User Experience**: Utilized DOM properties, methods, and techniques to create an interactive and responsive web application.
